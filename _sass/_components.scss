@@ -5743,11 +5743,15 @@ html {
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-8;
+  gap: $space-6;
   
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-sm) {
     grid-template-columns: repeat(2, 1fr);
-    gap: $space-10;
+    gap: $space-8;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    gap: $space-12;
   }
 }
 
@@ -5758,11 +5762,33 @@ html {
   padding: $space-6;
   transition: all $transition-base;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $primary-purple, $accent-blue);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
   
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow);
     border-color: rgba($primary-purple, 0.3);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .member-photo img {
+      transform: scale(1.02);
+    }
   }
   
   @media (min-width: $breakpoint-md) {
@@ -5772,17 +5798,25 @@ html {
 
 .member-photo {
   margin-bottom: $space-6;
+  display: flex;
+  justify-content: center;
   
   img {
     width: 100%;
-    max-width: 200px;
+    max-width: 280px;
     height: auto;
     border-radius: $rounded-xl;
-    box-shadow: $shadow-sm;
+    box-shadow: $shadow-md;
     transition: transform $transition-base;
+    aspect-ratio: 4/5;
+    object-fit: cover;
     
     @media (min-width: $breakpoint-md) {
-      max-width: 250px;
+      max-width: 320px;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      max-width: 350px;
     }
   }
   
