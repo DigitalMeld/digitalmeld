@@ -5849,15 +5849,15 @@ html {
 .core-functionality-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-8;
+  gap: $space-6;
   
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-sm) {
     grid-template-columns: repeat(2, 1fr);
-    gap: $space-10;
+    gap: $space-8;
   }
   
   @media (min-width: $breakpoint-lg) {
-    gap: $space-12;
+    gap: $space-10;
   }
 }
 
@@ -5868,6 +5868,8 @@ html {
   overflow: hidden;
   transition: all $transition-base;
   position: relative;
+  display: flex;
+  flex-direction: column;
   
   &::before {
     content: '';
@@ -5882,7 +5884,7 @@ html {
   }
   
   &:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow);
     border-color: rgba($primary-purple, 0.3);
     
@@ -5891,7 +5893,7 @@ html {
     }
     
     .functionality-image img {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
   }
 }
@@ -5900,7 +5902,7 @@ html {
   position: relative;
   overflow: hidden;
   background: var(--bg-color);
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/3;
   
   img {
     width: 100%;
@@ -5912,22 +5914,22 @@ html {
 }
 
 .functionality-content {
-  padding: $space-6;
+  padding: $space-4 $space-6 $space-6;
   text-align: center;
   
   @media (min-width: $breakpoint-md) {
-    padding: $space-8;
+    padding: $space-5 $space-8 $space-8;
   }
 }
 
 .functionality-title {
-  font-size: $text-xl;
+  font-size: $text-lg;
   font-weight: $font-semibold;
   color: var(--text-color);
   margin: 0;
   line-height: $leading-tight;
   
   @media (min-width: $breakpoint-md) {
-    font-size: $text-2xl;
+    font-size: $text-xl;
   }
 }
