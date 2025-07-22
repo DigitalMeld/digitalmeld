@@ -2155,9 +2155,13 @@
   grid-template-columns: 1fr;
   gap: $space-6;
   
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-sm) {
     grid-template-columns: repeat(2, 1fr);
     gap: $space-8;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    gap: $space-10;
   }
 }
 
@@ -4012,9 +4016,13 @@ html {
   grid-template-columns: 1fr;
   gap: $space-6;
   
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-sm) {
     grid-template-columns: repeat(2, 1fr);
     gap: $space-8;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    gap: $space-10;
   }
 }
 
