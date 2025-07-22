@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test - DigitalMeld.ai</title>
+    <style>
+        body { font-family: system-ui; margin: 2rem; }
+        .metric { margin: 1rem 0; padding: 1rem; border: 1px solid #ddd; border-radius: 4px; }
+        .good { background-color: #d4edda; }
+        .needs-improvement { background-color: #fff3cd; }
+        .poor { background-color: #f8d7da; }
+        button { padding: 0.5rem 1rem; margin: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1>DigitalMeld.ai Performance Test</h1>
+    
+    <div id="metrics-container">
+        <h2>Core Web Vitals</h2>
+        <div id="lcp-metric" class="metric">
+            <strong>Largest Contentful Paint (LCP):</strong> <span id="lcp-value">Measuring...</span>
+        </div>
+        <div id="fid-metric" class="metric">
+            <strong>First Input Delay (FID):</strong> <span id="fid-value">Measuring...</span>
+        </div>
+        <div id="cls-metric" class="metric">
+            <strong>Cumulative Layout Shift (CLS):</strong> <span id="cls-value">Measuring...</span>
+        </div>
+        <div id="fcp-metric" class="metric">
+            <strong>First Contentful Paint (FCP):</strong> <span id="fcp-value">Measuring...</span>
+        </div>
+        <div id="ttfb-metric" class="metric">
+            <strong>Time to First Byte (TTFB):</strong> <span id="ttfb-value">Measuring...</span>
+        </div>
+    </div>
+
+    <div id="lighthouse-container">
+        <h2>Lighthouse Score Estimate</h2>
+        <div id="lighthouse-scores">
+            <div class="metric">
+                <strong>Performance:</strong> <span id="perf-score">Calculating...</span>
+            </div>
+            <div class="metric">
+                <strong>Accessibility:</strong> <span id="a11y-score">Calculating...</span>
+            </div>
+            <div class="metric">
+                <strong>Best Practices:</strong> <span id="bp-score">Calculating...</span>
+            </div>
+            <div class="metric">
+                <strong>SEO:</strong> <span id="seo-score">Calculating...</span>
+            </div>
+            <div class="metric">
+                <strong>Overall:</strong> <span id="overall-score">Calculating...</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <h2>Performance Tools</h2>
+        <button onclick="runPerformanceTest()">Run Performance Test</button>
+        <button onclick="clearCache()">Clear Cache</button>
+        <button onclick="getCacheInfo()">Get Cache Info</button>
+        <button onclick="testServiceWorker()">Test Service Worker</button>
+    </div>
+
+    <div id="results">
+        <h2>Test Results</h2>
+        <pre id="results-output"></pre>
+    </div>
+
+    <script>
+        // Performance test functions
+        function runPerformanceTest() {
+            const output = document.getElementById('results-output');
+            output.textContent = 'Running performance test...\n';
+            
+            // Test Core Web Vitals
+            if (window.performanceMonitor) {
+                const metrics = window.performanceMonitor.metrics;
+                output.textContent += `\nCore Web Vitals:\n`;
+                output.textContent += `LCP: ${metrics.lcp?.value?.toFixed(2) || 'N/A'}ms (${metrics.lcp?.rating || 'unknown'})\n`;
+                output.textContent += `FID: ${metrics.fid?.value?.toFixed(2) || 'N/A'}ms (${metrics.fid?.rating || 'unknown'})\n`;
+                output.textContent += `CLS: ${metrics.cls?.value?.toFixed(3) || 'N/A'} (${metrics.cls?.rating || 'unknown'})\n`;
+                output.textContent += `FCP: ${metrics.fcp?.value?.toFixed(2) || 'N/A'}ms (${metrics.fcp?.rating || 'unknown'})\n`;
+                output.textContent += `TTFB: ${metrics.ttfb?.value?.toFixed(2) || 'N/A'}ms (${metrics.ttfb?.rating || 'unknown'})\n`;
+            }
+            
+            // Test Lighthouse scores
+            if (window.lighthouseEstimator) {
+                const scores = window.lighthouseEstimator.estimateScore();
+                output.textContent += `\nLighthouse Estimates:\n`;
+                output.textContent += `Performance: ${scores.performance}/100\n`;
+                output.textContent += `Accessibility: ${scores.accessibility}/100\n`;
+                output.textContent += `Best Practices: ${scores.bestPractices}/100\n`;
+                output.textContent += `SEO: ${scores.seo}/100\n`;
+                output.textContent += `Overall: ${scores.overall}/100\n`;
+            }
+        }
+
+        function clearCache() {
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                const channel = new MessageChannel();
+                channel.port1.onmessage = function(event) {
+                    const output = document.getElementById('results-output');
+                    output.textContent = 'Cache cleared successfully!\n';
+                };
+                navigator.serviceWorker.controller.postMessage({
+                    type: 'CLEAR_CACHE'
+                }, [channel.port2]);
+            } else {
+                document.getElementById('results-output').textContent = 'Service Worker not available\n';
+            }
+        }
+
+        function getCacheInfo() {
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                const channel = new MessageChannel();
+                channel.port1.onmessage = function(event) {
+                    const info = event.data;
+                    const output = document.getElementById('results-output');
+                    output.textContent = `Cache Information:\n`;
+                    output.textContent += `Static assets: ${info.static} items\n`;
+                    output.textContent += `Dynamic content: ${info.dynamic} items\n`;
+                    output.textContent += `Images: ${info.images} items\n`;
+                    output.textContent += `Total cached items: ${info.total}\n`;
+                };
+                navigator.serviceWorker.controller.postMessage({
+                    type: 'GET_CACHE_INFO'
+                }, [channel.port2]);
+            } else {
+                document.getElementById('results-output').textContent = 'Service Worker not available\n';
+            }
+        }
+
+        function testServiceWorker() {
+            const output = document.getElementById('results-output');
+            
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistration().then(function(registration) {
+                    if (registration) {
+                        output.textContent = `Service Worker Status:\n`;
+                        output.textContent += `State: ${registration.active?.state || 'inactive'}\n`;
+                        output.textContent += `Scope: ${registration.scope}\n`;
+                        output.textContent += `Update found: ${registration.waiting ? 'Yes' : 'No'}\n`;
+                    } else {
+                        output.textContent = 'Service Worker not registered\n';
+                    }
+                });
+            } else {
+                output.textContent = 'Service Worker not supported\n';
+            }
+        }
+
+        // Update metrics display
+        function updateMetricsDisplay() {
+            if (window.performanceMonitor) {
+                const metrics = window.performanceMonitor.metrics;
+                
+                // Update LCP
+                if (metrics.lcp) {
+                    document.getElementById('lcp-value').textContent = `${metrics.lcp.value.toFixed(2)}ms (${metrics.lcp.rating})`;
+                    document.getElementById('lcp-metric').className = `metric ${metrics.lcp.rating}`;
+                }
+                
+                // Update FID
+                if (metrics.fid) {
+                    document.getElementById('fid-value').textContent = `${metrics.fid.value.toFixed(2)}ms (${metrics.fid.rating})`;
+                    document.getElementById('fid-metric').className = `metric ${metrics.fid.rating}`;
+                }
+                
+                // Update CLS
+                if (metrics.cls) {
+                    document.getElementById('cls-value').textContent = `${metrics.cls.value.toFixed(3)} (${metrics.cls.rating})`;
+                    document.getElementById('cls-metric').className = `metric ${metrics.cls.rating}`;
+                }
+                
+                // Update FCP
+                if (metrics.fcp) {
+                    document.getElementById('fcp-value').textContent = `${metrics.fcp.value.toFixed(2)}ms (${metrics.fcp.rating})`;
+                    document.getElementById('fcp-metric').className = `metric ${metrics.fcp.rating}`;
+                }
+                
+                // Update TTFB
+                if (metrics.ttfb) {
+                    document.getElementById('ttfb-value').textContent = `${metrics.ttfb.value.toFixed(2)}ms (${metrics.ttfb.rating})`;
+                    document.getElementById('ttfb-metric').className = `metric ${metrics.ttfb.rating}`;
+                }
+            }
+            
+            // Update Lighthouse scores
+            if (window.lighthouseEstimator) {
+                const scores = window.lighthouseEstimator.estimateScore();
+                
+                document.getElementById('perf-score').textContent = `${scores.performance}/100`;
+                document.getElementById('a11y-score').textContent = `${scores.accessibility}/100`;
+                document.getElementById('bp-score').textContent = `${scores.bestPractices}/100`;
+                document.getElementById('seo-score').textContent = `${scores.seo}/100`;
+                document.getElementById('overall-score').textContent = `${scores.overall}/100`;
+            }
+        }
+
+        // Update display periodically
+        setInterval(updateMetricsDisplay, 2000);
+        
+        // Initial update after a delay
+        setTimeout(updateMetricsDisplay, 3000);
+    </script>
+    
+    <!-- Include performance monitoring -->
+    <script src="assets/js/performance.js"></script>
+</body>
+</html>

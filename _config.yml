@@ -1,0 +1,181 @@
+# Site settings
+title: DigitalMeld.ai
+description: "AI-Powered Operational Intelligence - Transform your operations with real-time monitoring, safety compliance, and predictive analytics at the edge"
+url: https://digitalmeld.ai
+baseurl: ""
+lang: en_US
+timezone: America/New_York
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# GitHub Pages settings
+github: [metadata]
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Asset optimization
+sass:
+  style: compressed
+  sourcemap: never
+  load_paths:
+    - _sass
+
+# Compression settings
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
+
+
+
+# Performance optimizations
+incremental: true
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Company information
+company:
+  name: DigitalMeld
+  tagline: "Unlock the Potential of AI at the Edge"
+  email: contact@digitalmeld.ai
+  description: "Transform your operations with AI-powered monitoring and analytics at the edge"
+
+# Navigation
+navigation:
+  - name: Product
+    url: /#product
+  - name: How it works
+    url: /#how-it-works
+  - name: Features
+    url: /#features
+  - name: Mission
+    url: /#mission
+  - name: Company
+    url: /company
+
+# Product information
+products:
+  rubicon:
+    name: Rubicon
+    tagline: "Advanced AI for Operational Excellence"
+    description: "Enterprise-grade AI monitoring that transforms operational challenges into competitive advantages through real-time intelligence at the edge"
+    variants:
+      - name: "Rubicon Safety"
+        description: "Comprehensive industrial safety monitoring that prevents incidents before they occur through intelligent PPE compliance, environmental hazard detection, and automated safety protocol enforcement"
+        features: 
+          - "Real-time PPE Compliance Detection"
+          - "Intelligent Zone Monitoring & Access Control"
+          - "Advanced Fire & Smoke Detection"
+          - "Continuous Methane & Gas Monitoring"
+          - "Personnel Re-identification & Tracking"
+      - name: "Rubicon Safety for Public Sector"
+        description: "Advanced situational awareness platform that enhances emergency response capabilities through real-time tracking, incident monitoring, and predictive analytics for public safety operations"
+        features:
+          - "Real-time People & Asset Tracking"
+          - "Automated Incident Detection & Response"
+          - "Comprehensive Time & Location Analysis"
+          - "Crowd Management & Flow Optimization"
+          - "Emergency Response Coordination"
+      - name: "Rubicon Perception"
+        description: "Intelligent data analytics platform that transforms operational data into actionable insights for process optimization, predictive maintenance, and performance enhancement"
+        features:
+          - "Advanced Process Control Optimization"
+          - "Predictive Weather Impact Analysis"
+          - "AI-Powered Predictive Maintenance"
+          - "Real-time Performance Analytics"
+          - "Operational Efficiency Optimization"
+
+# SEO and social
+author: DigitalMeld
+twitter:
+  username: digitalmeld
+  card: summary_large_image
+
+facebook:
+  app_id: # FB_APP_ID
+  publisher: # FB_PAGE_URL
+
+# Open Graph defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-image.png
+      layout: default
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+      image: /assets/images/og-image.png
+
+# SEO settings
+logo: /assets/images/logo.png
+social:
+  name: DigitalMeld
+  links:
+    - https://twitter.com/digitalmeld
+    - https://linkedin.com/company/digitalmeld
+    - https://github.com/digitalmeld
+    - https://digitalmeld.io
+
+# Analytics configuration
+google_analytics: # GA_TRACKING_ID - Add your Google Analytics 4 measurement ID here
+gtag: # GA4_MEASUREMENT_ID - Add your GA4 measurement ID here (G-XXXXXXXXXX)
+
+# Webmaster verification
+webmaster_verifications:
+  google: # GOOGLE_VERIFICATION_CODE
+  bing: # BING_VERIFICATION_CODE
+
+# Theme settings
+theme_mode: dark # default theme mode
+
+# Image optimization settings
+image_optim:
+  pngout: false
+  svgo: true
+  gifsicle:
+    interlace: false
+  jpegoptim:
+    strip: all
+    max_quality: 85
+  optipng:
+    level: 7
+  pngcrush:
+    chunks: rem
+    fix: false
+    brute: false
+
+# Performance settings
+future: false
+show_drafts: false
+limit_posts: 10
+highlighter: rouge
+gist:
+  noscript: false

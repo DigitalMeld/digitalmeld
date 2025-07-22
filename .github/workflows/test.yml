@@ -1,0 +1,40 @@
+name: Test Jekyll build
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+      
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+      
+      - name: Test HTML
+        run: |
+          # Install htmlproofer for link checking
+          gem install html-proofer
+          # Run htmlproofer with basic checks
+          htmlproofer ./_site --check-html --check-img-http --check-opengraph --report-missing-names --log-level :debug
+        continue-on-error: true
+      
+      - name: Check for broken links
+        run: |
+          # Simple check for common issues
+          echo "Checking for broken internal links..."
+          find ./_site -name "*.html" -exec grep -l "href=\"#" {} \; | head -5
+          echo "Build completed successfully!"

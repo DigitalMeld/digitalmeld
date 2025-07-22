@@ -1,0 +1,56 @@
+<header class="site-header" role="banner">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <!-- Logo and brand -->
+      <div class="navbar-brand">
+        <a href="{{ '/' | relative_url }}" class="brand-link" aria-label="DigitalMeld.ai home page">
+          <span class="brand-text">{{ site.company.name }}.ai</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <button class="navbar-toggle" 
+              type="button" 
+              aria-controls="navbar-menu" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation menu"
+              aria-describedby="navbar-toggle-help">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span id="navbar-toggle-help" class="sr-only">Press to open or close the navigation menu</span>
+      </button>
+
+      <!-- Navigation menu -->
+      <div class="navbar-menu" id="navbar-menu" aria-hidden="true">
+        <ul class="navbar-nav" role="menubar" aria-label="Main navigation menu">
+          {% for item in site.navigation %}
+          <li class="nav-item" role="none">
+            <a href="{{ item.url | relative_url }}" 
+               class="nav-link" 
+               role="menuitem"
+               tabindex="-1"
+               {% if item.url contains '#' %}data-smooth-scroll aria-describedby="smooth-scroll-help"{% endif %}>
+              {{ item.name }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <div id="smooth-scroll-help" class="sr-only">Links with smooth scrolling will animate to the target section</div>
+
+        <!-- Theme toggle -->
+        <div class="navbar-actions">
+          <button class="theme-toggle" 
+                  type="button" 
+                  aria-label="Switch to light theme" 
+                  aria-pressed="false"
+                  title="Toggle between light and dark themes"
+                  tabindex="-1">
+            <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
+            <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

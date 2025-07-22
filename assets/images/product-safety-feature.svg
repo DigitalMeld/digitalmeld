@@ -1,0 +1,52 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="safety-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0fdf4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dcfce7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="safety-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#safety-bg)" rx="12"/>
+  
+  <!-- Shield icon -->
+  <path d="M200 50 L160 70 L160 130 C160 160 180 180 200 190 C220 180 240 160 240 130 L240 70 Z" 
+        fill="url(#safety-accent)" stroke="#15803d" stroke-width="2"/>
+  
+  <!-- Checkmark inside shield -->
+  <path d="M185 120 L195 130 L215 110" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- PPE Icons -->
+  <!-- Hard hat -->
+  <circle cx="120" cy="220" r="25" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <path d="M105 210 Q120 200 135 210" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <text x="120" y="250" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#92400e">Hard Hat</text>
+  
+  <!-- Safety vest -->
+  <rect x="160" y="200" width="30" height="40" fill="#fb923c" stroke="#ea580c" stroke-width="2" rx="4"/>
+  <rect x="165" y="205" width="20" height="5" fill="#fbbf24"/>
+  <rect x="165" y="215" width="20" height="5" fill="#fbbf24"/>
+  <text x="175" y="250" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#9a3412">Safety Vest</text>
+  
+  <!-- Safety goggles -->
+  <ellipse cx="230" cy="220" rx="20" ry="15" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+  <ellipse cx="220" cy="220" rx="8" ry="10" fill="#ffffff" opacity="0.7"/>
+  <ellipse cx="240" cy="220" rx="8" ry="10" fill="#ffffff" opacity="0.7"/>
+  <text x="230" y="250" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#1e40af">Goggles</text>
+  
+  <!-- Gloves -->
+  <path d="M270 210 Q280 200 290 210 L295 230 Q290 240 280 235 L270 230 Z" 
+        fill="#ef4444" stroke="#dc2626" stroke-width="2"/>
+  <text x="280" y="250" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#991b1b">Gloves</text>
+  
+  <!-- Status indicators -->
+  <circle cx="350" cy="80" r="8" fill="#22c55e"/>
+  <text x="350" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#15803d">98% Compliant</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#166534">PPE Compliance Monitoring</text>
+</svg>
