@@ -2156,6 +2156,7 @@
   gap: $space-6;
   
   @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
     gap: $space-8;
   }
 }
@@ -4012,6 +4013,7 @@ html {
   gap: $space-6;
   
   @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
     gap: $space-8;
   }
 }
@@ -5732,5 +5734,94 @@ html {
   
   .resources-grid {
     grid-template-columns: 1fr;
+  }
+}
+//
+ =============================================================================
+// TEAM GRID SECTION
+// =============================================================================
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-8;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-10;
+  }
+}
+
+.team-member {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $rounded-xl;
+  padding: $space-6;
+  transition: all $transition-base;
+  text-align: center;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: rgba($primary-purple, 0.3);
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $space-8;
+  }
+}
+
+.member-photo {
+  margin-bottom: $space-6;
+  
+  img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: $rounded-xl;
+    box-shadow: $shadow-sm;
+    transition: transform $transition-base;
+    
+    @media (min-width: $breakpoint-md) {
+      max-width: 250px;
+    }
+  }
+  
+  &:hover img {
+    transform: scale(1.02);
+  }
+}
+
+.member-info {
+  .member-name {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: var(--text-color);
+    margin-bottom: $space-2;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-2xl;
+    }
+  }
+  
+  .member-title {
+    font-size: $text-base;
+    color: $primary-purple;
+    font-weight: $font-medium;
+    margin-bottom: $space-4;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-lg;
+    }
+  }
+  
+  .member-bio {
+    font-size: $text-sm;
+    color: var(--text-secondary);
+    line-height: $leading-relaxed;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-base;
+    }
   }
 }
