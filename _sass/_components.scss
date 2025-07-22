@@ -5823,4 +5823,110 @@ html {
       font-size: $text-base;
     }
   }
+}// =========
+====================================================================
+// CORE FUNCTIONALITY SECTION
+// =============================================================================
+
+.core-functionality {
+  background: var(--bg-color);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba($primary-purple, 0.03) 1px, transparent 0);
+    background-size: 25px 25px;
+    pointer-events: none;
+  }
+}
+
+.core-functionality-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-8;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-10;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    gap: $space-12;
+  }
+}
+
+.functionality-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $rounded-xl;
+  overflow: hidden;
+  transition: all $transition-base;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $primary-purple, $accent-blue, $accent-green);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+  
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: rgba($primary-purple, 0.3);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .functionality-image img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.functionality-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-color);
+  aspect-ratio: 16/10;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform $transition-slow;
+  }
+}
+
+.functionality-content {
+  padding: $space-6;
+  text-align: center;
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $space-8;
+  }
+}
+
+.functionality-title {
+  font-size: $text-xl;
+  font-weight: $font-semibold;
+  color: var(--text-color);
+  margin: 0;
+  line-height: $leading-tight;
+  
+  @media (min-width: $breakpoint-md) {
+    font-size: $text-2xl;
+  }
 }
