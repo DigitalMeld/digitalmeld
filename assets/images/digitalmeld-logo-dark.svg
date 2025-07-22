@@ -1,0 +1,16 @@
+<svg width="1024" height="256" viewBox="0 0 1024 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Purple gradient icon -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon shape -->
+  <path d="M32 64C32 46.3269 46.3269 32 64 32H128C145.673 32 160 46.3269 160 64V128C160 145.673 145.673 160 128 160H96C78.3269 160 64 145.673 64 128V96C64 78.3269 78.3269 64 96 64H128V96H96V128H128V160H64C46.3269 160 32 145.673 32 128V64Z" fill="url(#logoGradient)"/>
+  <path d="M96 32C113.673 32 128 46.3269 128 64V96H96C78.3269 96 64 81.6731 64 64C64 46.3269 78.3269 32 96 32Z" fill="url(#logoGradient)"/>
+  
+  <!-- Text "DigitalMeld" -->
+  <text x="200" y="140" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="600" fill="#374151">DigitalMeld</text>
+</svg>
