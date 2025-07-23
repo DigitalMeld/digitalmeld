@@ -243,10 +243,6 @@
   }
 }
 
-.nav-item {
-  // No additional styles needed
-}
-
 .nav-link {
   display: block;
   color: $text-dark;
@@ -300,7 +296,7 @@
       background: $primary-purple;
       border-radius: $rounded-full;
       
-      @media (max-width: $breakpoint-md - 1px) {
+      @media (max-width: #{$breakpoint-md - 1px}) {
         display: none;
       }
     }
@@ -3375,7 +3371,7 @@ html {
 }
 
 // Responsive adjustments for footer
-@media (max-width: $breakpoint-md - 1px) {
+@media (max-width: #{$breakpoint-md - 1px}) {
   .footer-container {
     text-align: center;
     
@@ -4200,7 +4196,7 @@ html {
 // =============================================================================
 
 // Enhanced touch interactions for mobile
-@media (max-width: $breakpoint-md - 1px) {
+@media (max-width: #{$breakpoint-md - 1px}) {
   // Increase touch targets for better mobile UX
   .card-cta,
   .btn,
@@ -4278,7 +4274,7 @@ html {
 }
 
 // Tablet-specific optimizations
-@media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1px) {
+@media (min-width: $breakpoint-md) and (max-width: #{$breakpoint-lg - 1px}) {
   .hero-content {
     gap: $space-10;
   }
@@ -4849,7 +4845,7 @@ html {
 }
 
 // Responsive adjustments for mobile
-@media (max-width: $breakpoint-sm - 1px) {
+@media (max-width: #{$breakpoint-sm - 1px}) {
   .error-page {
     padding: $space-12 0;
   }
@@ -5726,7 +5722,7 @@ html {
 }
 
 // Responsive adjustments
-@media (max-width: $breakpoint-sm - 1px) {
+@media (max-width: #{$breakpoint-sm - 1px}) {
   .contact-grid {
     gap: $space-12;
   }
@@ -5974,8 +5970,9 @@ html {
   @media (min-width: $breakpoint-md) {
     font-size: $text-xl;
   }
-}/
-/ =============================================================================
+}
+
+// =============================================================================
 // VALUE CTA BUTTONS IN GRID
 // =============================================================================
 
@@ -6044,8 +6041,9 @@ html {
   &:active {
     transform: translateY(0);
   }
-}/
-/ =============================================================================
+}
+
+// =============================================================================
 // FOOTER STYLES
 // =============================================================================
 
