@@ -6071,50 +6071,33 @@ html {
   }
 }
 
-.footer-header {
-  text-align: center;
-  margin-bottom: $space-12;
-  
-  @media (min-width: $breakpoint-md) {
-    margin-bottom: $space-16;
-  }
-}
-
-.footer-title {
-  font-size: $text-3xl;
-  font-weight: $font-bold;
-  color: var(--text-color);
-  margin-bottom: $space-4;
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: $text-4xl;
-  }
-}
-
-.footer-subtitle {
-  font-size: $text-lg;
-  color: var(--text-secondary);
-  margin: 0;
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: $text-xl;
-  }
-}
-
 .footer-content {
   display: grid;
   grid-template-columns: 1fr;
   gap: $space-12;
-  margin-bottom: $space-16;
+  margin-bottom: 0;
   
   @media (min-width: $breakpoint-md) {
-    grid-template-columns: 1fr 1fr;
-    gap: $space-16;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-8;
     align-items: start;
   }
   
   @media (min-width: $breakpoint-lg) {
-    gap: $space-20;
+    gap: $space-12;
+  }
+}
+
+// Footer columns base styling
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // Prevents text overflow
+  
+  // Ensure equal width distribution
+  @media (min-width: $breakpoint-md) {
+    flex: 1;
+    max-width: 100%;
   }
 }
 
@@ -6132,7 +6115,7 @@ html {
 // Contact Information
 .footer-contact {
   .contact-details {
-    margin-bottom: $space-8;
+    margin-bottom: 0;
   }
 }
 
@@ -6165,15 +6148,6 @@ html {
 }
 
 // Social Media
-.footer-social {
-  .social-title {
-    font-size: $text-lg;
-    font-weight: $font-semibold;
-    color: var(--text-color);
-    margin-bottom: $space-4;
-  }
-}
-
 .social-links {
   display: flex;
   gap: $space-4;
@@ -6204,72 +6178,24 @@ html {
   }
 }
 
-// Call to Action
-.footer-cta {
-  text-align: center;
-  
-  @media (min-width: $breakpoint-md) {
-    text-align: left;
-  }
-}
-
-.footer-cta-description {
-  font-size: $text-base;
-  color: var(--text-secondary);
-  line-height: $leading-relaxed;
-  margin-bottom: $space-8;
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: $text-lg;
-  }
-}
-
-.footer-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: $space-4 $space-8;
-  font-size: $text-base;
-  font-weight: $font-semibold;
-  background: $primary-purple;
-  color: $white;
-  border: 2px solid $primary-purple;
-  border-radius: $rounded-lg;
-  text-decoration: none;
-  transition: all $transition-base;
-  min-height: 3.5rem;
-  
-  &:hover {
-    background: lighten($primary-purple, 8%);
-    border-color: lighten($primary-purple, 8%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba($primary-purple, 0.3);
-  }
-  
-  &:active {
-    transform: translateY(0);
-  }
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: $text-lg;
-    padding: $space-5 $space-10;
-    min-height: 4rem;
-  }
-}
-
-// Footer Bottom
-.footer-bottom {
-  border-top: 1px solid var(--border-color);
-  padding-top: $space-8;
-  text-align: center;
-}
-
-.copyright {
-  font-size: $text-sm;
-  color: var(--text-secondary);
-  margin: 0;
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: $text-base;
+// Copyright Column
+.footer-copyright {
+  .copyright {
+    font-size: $text-sm;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: $leading-normal;
+    text-align: center;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-base;
+      text-align: left;
+      // Ensure adequate space for the copyright content
+      min-width: 200px;
+    }
+    
+    br {
+      display: block;
+    }
   }
 }
