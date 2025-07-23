@@ -2223,6 +2223,90 @@
   margin: 0;
 }
 
+// =============================================================================
+// COMPANY PAGE VALUE CARDS
+// =============================================================================
+
+.value-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $rounded-xl;
+  padding: $space-6;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: rgba($primary-purple, 0.3);
+    
+    .value-icon {
+      background: rgba($primary-purple, 0.15);
+      color: $primary-purple;
+    }
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $space-8;
+  }
+}
+
+.value-header {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  margin-bottom: $space-4;
+  
+  h3 {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: var(--text-color);
+    margin: 0;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-2xl;
+    }
+  }
+}
+
+.value-card .value-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: rgba($primary-purple, 0.1);
+  border-radius: $rounded-lg;
+  color: var(--text-secondary);
+  transition: all $transition-base;
+  flex-shrink: 0;
+  
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    width: 3.5rem;
+    height: 3.5rem;
+    
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
+
+.value-card p {
+  font-size: $text-base;
+  color: var(--text-secondary);
+  line-height: $leading-relaxed;
+  margin: 0;
+  
+  @media (min-width: $breakpoint-md) {
+    font-size: $text-lg;
+  }
+}
+
 .mission-cta {
   display: flex;
   flex-direction: column;
@@ -5768,6 +5852,9 @@ html {
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
   
   &::before {
     content: '';
@@ -5785,6 +5872,8 @@ html {
     transform: translateY(-4px);
     box-shadow: var(--shadow);
     border-color: rgba($primary-purple, 0.3);
+    text-decoration: none;
+    color: inherit;
     
     &::before {
       opacity: 1;
@@ -5793,6 +5882,11 @@ html {
     .member-photo img {
       transform: scale(1.02);
     }
+  }
+  
+  &:focus {
+    outline: 2px solid $primary-purple;
+    outline-offset: 2px;
   }
   
   @media (min-width: $breakpoint-md) {
@@ -5982,6 +6076,10 @@ html {
   justify-content: center;
   padding: $space-8;
   
+  @media (min-width: $breakpoint-sm) {
+    grid-column: span 2;
+  }
+  
   .value-cta-buttons {
     display: flex;
     flex-direction: column;
@@ -6057,20 +6155,6 @@ html {
   }
 }
 
-.footer-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 $space-4;
-  
-  @media (min-width: $breakpoint-sm) {
-    padding: 0 $space-6;
-  }
-  
-  @media (min-width: $breakpoint-lg) {
-    padding: 0 $space-8;
-  }
-}
-
 .footer-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -6106,14 +6190,22 @@ html {
   font-weight: $font-semibold;
   color: var(--text-color);
   margin-bottom: $space-6;
+  text-align: center;
   
   @media (min-width: $breakpoint-md) {
     font-size: $text-2xl;
+    text-align: left;
   }
 }
 
 // Contact Information
 .footer-contact {
+  text-align: center;
+  
+  @media (min-width: $breakpoint-md) {
+    text-align: left;
+  }
+  
   .contact-details {
     margin-bottom: 0;
   }
@@ -6122,10 +6214,12 @@ html {
 .contact-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: $space-2;
   margin-bottom: $space-3;
   
   @media (min-width: $breakpoint-md) {
+    justify-content: flex-start;
     margin-bottom: $space-4;
   }
 }
@@ -6150,20 +6244,36 @@ html {
 // Social Media
 .social-links {
   display: flex;
-  gap: $space-4;
+  flex-wrap: wrap;
+  gap: $space-3;
+  justify-content: center;
+  
+  @media (min-width: $breakpoint-md) {
+    justify-content: flex-start;
+    gap: $space-4;
+  }
 }
 
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background: rgba($primary-purple, 0.1);
   border: 1px solid rgba($primary-purple, 0.2);
   border-radius: $rounded-lg;
   color: $primary-purple;
   transition: all $transition-base;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  
+  @media (min-width: $breakpoint-md) {
+    width: 3rem;
+    height: 3rem;
+  }
   
   &:hover {
     background: rgba($primary-purple, 0.2);
@@ -6173,25 +6283,33 @@ html {
   }
   
   .social-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    
+    @media (min-width: $breakpoint-md) {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
 }
 
 // Copyright Column
 .footer-copyright {
+  text-align: center;
+  
+  @media (min-width: $breakpoint-md) {
+    text-align: left;
+  }
+  
   .copyright {
     font-size: $text-sm;
     color: var(--text-secondary);
     margin: 0;
     line-height: $leading-normal;
-    text-align: center;
     
     @media (min-width: $breakpoint-md) {
       font-size: $text-base;
-      text-align: left;
-      // Ensure adequate space for the copyright content
-      min-width: 200px;
     }
     
     br {
